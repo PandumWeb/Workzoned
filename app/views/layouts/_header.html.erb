@@ -1,0 +1,50 @@
+  <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+ 
+          <%= link_to "Workzoned", root_path, :class=>"navbar-brand" %>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><%= link_to "Accueil", root_path %></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Catégories <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+              <% Post.all.each do |post|%>
+                <li><%= link_to post.category.name, category_posts_path(post.category) %> </li>
+              <% end %>
+              </ul>
+
+            </li>
+            <li><%= link_to "Nouvelle annonce", new_post_path %></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+          <% if !user_signed_in? %>
+            <li><%= link_to "S'inscrire", new_user_registration_path %></li>
+            <li><%= link_to "Connexion", user_session_path %></li>
+          <% else %>
+            <li class="active"><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+          <% end %>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    <% if flash[:notice] %>
+      <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= notice %>
+      </div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= alert %>
+      </div>
+    <% end %>

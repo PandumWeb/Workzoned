@@ -1,0 +1,29 @@
+<%= form_for @post do |f| %>
+	<form>
+		<% if @post.errors.any? %>
+		<h2><%= pluralize(@post.errors.count,"error")%> precented this post from saving</h2>
+		<ul>
+			<% @post.errors.full_messages.each do |msg|%>
+			<li><%= msg %></li>
+			<% end %>
+		</ul>
+		<% end %>
+		<div class="form-group">
+			<%= f.label :title %><br>
+			<%= f.text_field :title, :class=>"form-control" %>
+		</div>
+		<div class="form-group">
+			<%= f.label :body %><br>
+			<%= f.text_area :body, :class=>"form-control" %>
+		</div>
+		<div class="form-group">
+			<%= f.label :localisation %><br>
+			<%= f.text_area :localisation, :class=>"form-control" %>
+		</div>
+		<div class="form-group">
+			<%= f.label :category %><br>
+			<%= f.collection_select :category_id, Category.all, :id, :name, :include_blank => false,:id=> "simple-example"  %>
+		</div>
+			<%= f.submit class: "btn btn-primary", :value => "Send" %>
+		</form>
+<% end %>

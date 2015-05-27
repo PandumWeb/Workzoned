@@ -1,0 +1,9 @@
+<h1><%= @post.title %></h1>
+<small>Submitted <%= time_ago_in_words(@post.created_at) %> ago</small>
+<p>Category: <%= @post.category.name %></p>
+<% if @post.user == current_user %>
+	<p><small><%= link_to 'Edit', edit_post_path(@post) %> |
+	<%= link_to 'Delete', post_path(@post), method: :delete, data:{confirm: 'Are you sure ?'} %></small>
+	</p>
+	<% end %>
+<p><%= @post.body %></p>
