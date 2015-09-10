@@ -4,7 +4,6 @@
   <title>Workzoned</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
- <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tags %>
   <link rel="stylesheet" href="stylesheets/bootstrap-select.css">
 <link rel="stylesheet" href="stylesheets/select2.css">
@@ -15,14 +14,6 @@
 <div class="container">
 	<%= yield %>
 </div>
-<script>
-	$(document).ready(function() {
-  prettyPrint();
-
-  $('select#simple-example').select2();
-
- });
-</script>
 <script src="javascripts/jquery.js"></script>
 <script src="javascripts/bootstrap-select.js"></script>
 <script src="javascripts/select2.js"></script>

@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= current_user.name %></h1>
+
+<p>Name:<%= current_user.name %></p>
+<p>Email:<%= current_user.email %></p>
+<p>Number phone:<%= current_user.phone_number %></p>
+
+<h2>My articles</h2>
+<% @posts.each do |post|%>
+<p><%= link_to post.title,post %> </p>
+<% end %>

@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
+  resources :localisations
   devise_for :users
   resources :categories do
   resources :posts
 end
-  resources :posts
+  resources :posts do
+    collection do
+      get :search
+    end
+  end
+
+  resources :dashboards
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

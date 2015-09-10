@@ -1,12 +1,20 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  def index
-    if params[:category_id]
-       @category = Category.find(params[:category_id])
-      @posts = @category.posts
+
+  def search
+    if params[:search].present?
+      @posts = Post.search(params[:search])
     else
-      @posts = Post.all.order('created_at DESC')
+      @post = Post.all
     end
+  end
+  def index
+      if params[:category_id]
+         @category = Category.find(params[:category_id])
+        @posts = @category.posts
+      else
+        @posts = Post.all.paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
+      end
   end
   def new
     @post = Post.new
