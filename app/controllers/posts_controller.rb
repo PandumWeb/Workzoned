@@ -21,7 +21,7 @@ class PostsController < ApplicationController
   end
   def create
     # @post = Post.new(post_params)
-    @post = current_user.posts.build(params[:post].permit(:title, :body, :category_id, :localisation))
+    @post = current_user.posts.build(params[:post].permit(:title, :body, :category_id, :localisation,:image))
     if @post.save
       redirect_to @post
     else
@@ -36,7 +36,7 @@ class PostsController < ApplicationController
   end
   def update
     @post = Post.find(params[:id])
-    if @post.update(params[:post].permit(:title, :body, :category_id,:localisation))
+    if @post.update(params[:post].permit(:title, :body, :category_id,:localisation,:image))
       redirect_to @post
     else
       render 'edit'
@@ -51,6 +51,6 @@ class PostsController < ApplicationController
 
   private
     def post_params
-      params.require(:post).permit(:title, :body, :category_id,:localisation)     
+      params.require(:post).permit(:title, :body, :category_id,:localisation,:image)     
     end
 end

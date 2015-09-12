@@ -28,15 +28,23 @@ gem 'searchkick'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-gem 'pg'
-
-gem 'rails_12factor', group: :production
 
 # auth
 gem 'devise'
 
 gem 'will_paginate-bootstrap'
 
+gem "paperclip", "~> 4.3"
+
+group :production do
+  gem 'rails_12factor'
+  gem 'pg'
+  gem 'heroku-deflater'
+end
+
+group :development do
+  gem 'sqlite3'
+end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

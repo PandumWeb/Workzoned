@@ -1,4 +1,4 @@
-<%= form_for @post do |f| %>
+<%= form_for @post, url: posts_path, html: { multipart: true } do |f| %>
 	<form>
 		<% if @post.errors.any? %>
 		<h2><%= pluralize(@post.errors.count,"error")%> precented this post from saving</h2>
@@ -23,6 +23,10 @@
 		<div class="form-group">
 			<%= f.label :category %><br>
 			<%= f.collection_select :category_id, Category.all, :id, :name, :include_blank => false,:id=> "simple-example"  %>
+		</div>
+		<div class="form-group">
+			<%= f.label :image %><br>
+			<%= f.file_field :image, :class=>"form-control" %>
 		</div>
 			<%= f.submit class: "btn btn-primary", :value => "Send" %>
 		</form>

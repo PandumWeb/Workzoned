@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= current_user.name %></h1>
-
+<%= image_tag current_user.avatar.url(:medium) %>
 <p>Name:<%= current_user.name %></p>
 <p>Email:<%= current_user.email %></p>
 <p>Number phone:<%= current_user.phone_number %></p>
@@ -10,3 +10,4 @@
 <% @posts.each do |post|%>
 <p><%= link_to post.title,post %> </p>
 <% end %>
+<%= link_to 'Edit profil',edit_user_registration_path %>
