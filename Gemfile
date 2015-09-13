@@ -56,3 +56,14 @@ group :development, :test do
   gem 'spring'
 end
 
+# mailboxer
+gem 'thin'
+gem "mailboxer"
+gem 'chosen-rails'
+gem 'tzinfo-data', platforms: [:mingw, :mswin]
+gem 'better_errors'
+gem 'binding_of_caller'
+gem 'annotate'
+gem 'gravatar_image_tag'
+
+

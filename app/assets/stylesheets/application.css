@@ -12,4 +12,34 @@
  *
  *= require_tree .
  *= require_self
+ *= require chosen
  */
+
+@import 'chosen';
+@import 'image-select';
+
+.messages {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+.alert-notice {
+  @extend .alert-success;
+}
+
+.alert-alert {
+  @extend .alert-warning;
+}
+
+footer {
+  margin-top: 2em;
+  clear: both;
+}
+
+.small{
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+}

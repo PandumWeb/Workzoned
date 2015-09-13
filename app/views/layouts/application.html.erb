@@ -5,17 +5,19 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <link rel="stylesheet" href="stylesheets/bootstrap-select.css">
-<link rel="stylesheet" href="stylesheets/select2.css">
 </head>
 <body>
 
 <%= render 'layouts/header' %>
 <div class="container">
+ <div class="page-header">
+    <h1><%= yield :page_header %></h1>
+  </div>
 	<%= yield %>
 </div>
-<script src="javascripts/jquery.js"></script>
-<script src="javascripts/bootstrap-select.js"></script>
-<script src="javascripts/select2.js"></script>
+<%= javascript_include_tag 'jquery',:defer => "defer" %>
+<%= javascript_include_tag 'bootstrap-select',:defer => "defer" %>
+<%= javascript_include_tag 'select2',:defer => "defer" %>
+<%= javascript_include_tag 'chosen.jquery.min',:defer => "defer" %>
 </body>
 </html>

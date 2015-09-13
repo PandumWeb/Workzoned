@@ -11,6 +11,9 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
 //= require turbolinks
+//= require jquery_ujs
+//= require chosen-jquery
+//= require jquery.image-select
 //= require_tree .
+
